@@ -48,10 +48,10 @@
 		if ( tagData != null ) {
 			var list = tagData.split(',', 2);
 			if (this._actorId != null && $dataActors[this._actorId].meta[list[0]] != null) {
-				stateId = list[1]
+				stateId = list[1];
 			}
 			if (this._enemyId != null && $dataEnemies[this._enemyId].meta[list[0]] != null) {
-				stateId = list[1]
+				stateId = list[1];
 			}
 		}
 
@@ -60,7 +60,7 @@
 		if ( actorData != null ) {
 			var list = actorData.split(',', 2);
 			if (this._actorId != null && this._actorId == list[0]) {
-				stateId = list[1]
+				stateId = list[1];
 			}
 		}
 
@@ -69,7 +69,7 @@
 		if ( enemyData != null ) {
 			var list = enemyData.split(',', 2);
 			if (this._enemyId != null && this._enemyId == list[0]) {
-				stateId = list[1]
+				stateId = list[1];
 			}
 		}
 
