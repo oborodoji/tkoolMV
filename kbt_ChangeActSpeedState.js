@@ -44,7 +44,7 @@
  *   素早さが100、防御スキル補正が100、ステート補正が500だった場合は500で計算します。
  *   ステートの補正値がマイナスだった場合は、より小さい数値となります。
  *
- * 隊商のステートのメモ欄に、以下のように記載してください。
+ * 対象のステートのメモ欄に、以下のように記載してください。
  * 数値は実数を指定してください。
  *  <ChangeActSpeed:[補正値]>
  *
@@ -61,37 +61,37 @@
 
   var _Game_Action_prototype_speed = Game_Action.prototype.speed;
   Game_Action.prototype.speed = function() {
-	  var speed = _Game_Action_prototype_speed.call(this);
+	var speed = _Game_Action_prototype_speed.call(this);
 
-      // 対象者のデータを取得
-	  var target;
-	  if (this._subjectActorId > 0) {
-		  // アクター
-		  target = $gameActors.actor(this._subjectActorId);
-      } else {
-		  // エネミー
-		  target = $gameTroop.members()[this._subjectEnemyIndex];
-	  }
+	// 対象者のデータを取得
+	var target;
+	if (this._subjectActorId > 0) {
+		// アクター
+		target = $gameActors.actor(this._subjectActorId);
+	} else {
+		// エネミー
+		target = $gameTroop.members()[this._subjectEnemyIndex];
+	}
 
-	  // ステートから速度補正
-      target._states.forEach(function(state) {
-          if ($dataStates[state].meta['ChangeActSpeed'] != null) {
-			  var changeSpeed = Number($dataStates[state].meta['ChangeActSpeed']);
-			  if (isOverwrite === 1) {
-				  speed += changeSpeed;
-			  } else if (isOverwrite === 2) {
-				  speed = changeSpeed;
-			  } else {
-				  if (changeSpeed > 0) {
-					  speed = Math.max(speed, changeSpeed);
-				  } else {
-					  speed = Math.min(speed, changeSpeed);
-				  }
-			  }
-          }
-      });
+	// ステートから速度補正
+	target._states.forEach(function(state) {
+		if ($dataStates[state].meta['ChangeActSpeed'] != null) {
+			var changeSpeed = Number($dataStates[state].meta['ChangeActSpeed']);
+			if (isOverwrite === 1) {
+				speed += changeSpeed;
+			} else if (isOverwrite === 2) {
+				speed = changeSpeed;
+			} else {
+				if (changeSpeed > 0) {
+					speed = Math.max(speed, changeSpeed);
+				} else {
+					speed = Math.min(speed, changeSpeed);
+				}
+			}
+		}
+	});
 
-      return speed;
+	return speed;
   };
 
 })();
