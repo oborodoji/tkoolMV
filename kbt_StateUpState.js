@@ -41,7 +41,7 @@
  */
 
 (function() {
-  var parameters = PluginManager.parameters('UchiyosoSetting_ForState');
+  var parameters = PluginManager.parameters('kbt_StateUpState');
   if (parameters['DebuffUpStateList'] !== undefined) {
     var DebuffUpStateList = JSON.parse(parameters['DebuffUpStateList']);
   } else {
