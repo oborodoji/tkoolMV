@@ -44,7 +44,7 @@
  */
 
 (function() {
-    var parameters = PluginManager.parameters('UchiyosoSetting_ForRandomOrganize');
+    var parameters = PluginManager.parameters('kbt_RandomOrganize');
     var MaxPartyMember = Number(parameters['MaxPartyMember']);
     var StartId = Number(parameters['StartId']);
     if (parameters['ExclusionActorList'] !== undefined) {
