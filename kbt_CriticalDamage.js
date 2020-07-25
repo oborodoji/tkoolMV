@@ -31,7 +31,7 @@
  */
 
 (function() {
-  var parameters = PluginManager.parameters('UchiyosoSetting_ForCritical');
+  var parameters = PluginManager.parameters('kbt_CriticalDamage');
   var CriticalBonus = Number(parameters['CriticalBonus']);
 
   var _Game_Action_applyCritical = Game_Action.prototype.applyCritical;
