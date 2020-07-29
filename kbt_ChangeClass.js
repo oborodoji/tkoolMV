@@ -3,7 +3,7 @@
 // クラスチェンジ機能を設定するプラグインです。
 // Last Updated: 2020.07.29
 //
-// Copyright (c) 2019 小鳩箱
+// Copyright (c) 2020 小鳩箱
 // Released under the MIT license
 // https://opensource.org/licenses/mit-license.php
 //=============================================================================
@@ -139,7 +139,7 @@ function Game_ClassLevelList(){
             selectList.push('キャンセル');
         }
 
-        messageClass.setupChoices([selectList,selectList.length,0,2,0]);
+        messageClass.setupChoices([selectList,(selectList.length - 1),0,2,0]);
         messageClass.setWaitMode('message');
         if (Message1 != '') {
             $gameMessage.add(Message1);
@@ -168,26 +168,26 @@ function Game_ClassLevelList(){
             // スキルの忘却
             if (IsForget == 2) {
                 // 忘却する
-        		$dataClasses[$gameActors.actor(actorId)._classId].learnings.forEach(function(learning) {
-            		$gameActors.actor(actorId).forgetSkill(learning.skillId);
-        		});
+                $dataClasses[$gameActors.actor(actorId)._classId].learnings.forEach(function(learning) {
+                    $gameActors.actor(actorId).forgetSkill(learning.skillId);
+                });
             }
 
             // 職業を変更
             if (IsShare == 1) {
-				// レベルを共有
+                // レベルを共有
                 $gameActors.actor(actorId).changeClass(classData.id, true);
             } else {
-				// レベルは独立
+                // レベルは独立
                 $gameActors.actor(actorId).changeClass(classData.id, false)
             }
 
-			// 現在レベル以下のスキルを習得
-        	$dataClasses[$gameActors.actor(actorId)._classId].learnings.forEach(function(learning) {
-				if (learning.level <= $gameActors.actor(actorId)._level) {
-           			$gameActors.actor(actorId).learnSkill(learning.skillId);
-				}
-        	});
+            // 現在レベル以下のスキルを習得
+            $dataClasses[$gameActors.actor(actorId)._classId].learnings.forEach(function(learning) {
+                if (learning.level <= $gameActors.actor(actorId)._level) {
+                       $gameActors.actor(actorId).learnSkill(learning.skillId);
+                }
+            });
 
             // 転職完了
             if (Message2 != '') {
