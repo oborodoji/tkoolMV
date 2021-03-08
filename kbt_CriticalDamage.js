@@ -36,7 +36,7 @@
 
   var _Game_Action_applyCritical = Game_Action.prototype.applyCritical;
   Game_Action.prototype.applyCritical = function(damage) {
-    _Game_Action_applyCritical.call(this);
+    damage = _Game_Action_applyCritical.call(this, damage);
     var item = this.item();
     var CriticalBonusOfSkill = item.meta['CriticalD'];
 
